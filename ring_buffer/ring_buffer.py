@@ -11,10 +11,10 @@ class RingBuffer:
         if self.current is None:
             self.current = self.storage.head
 
-        if len(self.storage) >= self.capacity:
+        if len(self.storage) == self.capacity:
             next_current = self.current.next
             self.current.insert_after(item)
-            self.current.delete()
+            self.storage.delete(self.current)
             self.current = next_current
             # next_current = self.current.next
             # self.current.delete()
