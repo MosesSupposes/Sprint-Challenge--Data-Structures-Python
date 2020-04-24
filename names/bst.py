@@ -25,7 +25,34 @@ class BinarySearchTree:
             # Base case
             else:
                 self.right = BinarySearchTree(value) 
-  
+    
+    def iterative_insert(self, value):
+        root = self
+        if (root == None):
+            return value
+
+        curr = root
+        while (True): 
+            if value < curr.value:
+                if curr.left != None:
+                    curr = curr.left
+                else: 
+                    curr.left = BinarySearchTree(value)
+                    break
+                
+            elif value > curr.value:
+                if curr.right != None:
+                    curr = curr.right
+                else:
+                    curr.right = BinarySearchTree(value)
+                    break
+                
+            else:
+                curr.value = value
+                break
+            
+        return root
+
         
     # Return True if the tree contains the value
     # False if it does not
